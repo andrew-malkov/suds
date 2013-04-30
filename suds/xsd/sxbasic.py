@@ -517,9 +517,9 @@ class Import(SchemaObject):
     def __init__(self, schema, root):
         SchemaObject.__init__(self, schema, root)
         self.ns = (None, root.get('namespace'))
-        self.location = root.get('schemaLocation')
+        self.location = self.locations.get(self.ns[1])
         if self.location is None:
-            self.location = self.locations.get(self.ns[1])
+            self.location = root.get('schemaLocation')
         self.opened = False
         
     def open(self, options):
