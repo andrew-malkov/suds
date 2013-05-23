@@ -45,7 +45,7 @@ class Document(Element):
         s = []
         s.append(self.DECL)
         s.append('\n')
-        s.append( str( self.root() ) )
+        if self.root() : s.append( str( self.root() ) )
         return ''.join(s)
     
     def plain(self):
